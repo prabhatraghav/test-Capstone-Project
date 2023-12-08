@@ -4,9 +4,11 @@ pipeline {
         nodejs 'nodejs'
     }
     stages {
+        stage('checkout') {
+        git branch: 'Dev', url: 'https://github.com/akshu20791/Capstone-Project'
+        }
         stage('Build') {
             steps {
-                git branch: 'Dev', credentialsId: 'gitcreds', url: 'https://github.com/akshu20791/Capstone-Project'
                 sh 'npm install'
                 // sh 'npm run build'
             }
