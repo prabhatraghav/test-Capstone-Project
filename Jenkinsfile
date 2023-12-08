@@ -34,7 +34,7 @@ pipeline {
                 sh 'docker push akshu20791/dev:latest'
                 }
             }
-       }
+         }
        stage('Deploy') {
             steps {  
                 script {
