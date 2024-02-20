@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/prabhatraghav/test-Capstone-Project/', branch: "master"
+                git url: 'https://github.com/prabhatraghav/test-Capstone-Project/', branch: "Dev"
             }
         }
         stage('Build') {
