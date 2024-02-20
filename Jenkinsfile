@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                    sh 'docker run -itd --name insura -p 9090:80 techomaniac83/testcapstoneimgaddbook:latest'
+                    sh 'docker run -itd --name insura -p 9090:5000 techomaniac83/testcapstoneimgaddbook:latest'
                 }
             }
     }
