@@ -14,8 +14,8 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh 'docker build -t insuraimg .'
-                sh 'docker tag insuraimg:latest techomaniac83/insuraimgaddbook:latest'
+                sh 'docker build -t testcapstoneimg .'
+                sh 'docker tag testcapstoneimg:latest techomaniac83/testcapstoneimgaddbook:latest'
             }
         }
 
@@ -23,13 +23,13 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub_cred', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh "echo \$PASS | docker login -u \$USER --password-stdin"
-                    sh 'docker push techomaniac83/insuraimgaddbook:latest'
+                    sh 'docker push techomaniac83/testcapstoneimgaddbook:latest'
                 }
             }
         }
         stage('Deploy') {
             steps {
-                    sh 'docker run -itd --name insura -p 8089:8081 techomaniac83/insuraimgaddbook:latest'
+                    sh 'docker run -itd --name insura -p 9090:80 techomaniac83/testcapstoneimgaddbook:latest'
                 }
             }
     }
