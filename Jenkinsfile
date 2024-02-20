@@ -37,13 +37,18 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                script {
-                    def dockerCmd = 'docker run -itd --name My-first-container -p 80:5000 techomaniac83/dev:latest'
-                    sshagent(['sshkeypair']) {
-                        sh "ssh -o StrictHostKeyChecking=no ubuntu@51.20.192.244 ${dockerCmd}"
-                    }
+                    sh 'docker run -itd --name insura -p 9090:5000 techomaniac83/dev:latest'
                 }
             }
-        }
+       // stage('Deploy') {
+           // steps {
+              //  script {
+                  // def dockerCmd = 'docker run -itd --name My-first-container -p 80:5000 techomaniac83/dev:latest'
+                    //sshagent(['sshkeypair']) {
+                      //  sh "ssh -o StrictHostKeyChecking=no ubuntu@51.20.192.244 ${dockerCmd}"
+                    //}
+                //}
+            //}
+        //}
     }
 }
