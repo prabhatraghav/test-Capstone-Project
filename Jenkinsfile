@@ -23,21 +23,21 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh 'docker build -t reactappimage .'
-                sh 'docker tag reactappimage:latest techomaniac83/reactappimgaddbook:latest'
+                sh 'docker build -t reactimage .'
+                sh 'docker tag reactimage:latest techomaniac83/reactimgapp:latest'
             }
         }
         stage('Docker login') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub_cred', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh "echo $PASS | docker login -u $USER --password-stdin"
-                    sh 'docker push techomaniac83/reactappimgaddbook:latest'
+                    sh 'docker push techomaniac83/reactimgapp:latest'
                 }
             }
         }
         stage('Deploy') {
             steps {
-                    sh 'docker run -itd --name insura -p 8089:9095 techomaniac83/reactappimgaddbook:latest'
+                    sh 'docker run -itd --name insura -p 8089:9095 techomaniac83/reactimgapp:latest'
                 }
             }
        // stage('Deploy') {
