@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git url:'https://github.com/akshu20791/Capstone-Project/'
+                git url:'https://github.com/prabhatraghav/test-Capstone-Project/'
             }
         }
         stage('Build') {
