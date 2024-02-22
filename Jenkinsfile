@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                    sh 'docker run -itd --name reactapp -p 8089:9095 techomaniac83/reactimgapp:latest'
+                    sh 'docker run -itd --name reactapp -p 8089:3000 techomaniac83/reactimgapp:latest'
                 }
             }
        // stage('Deploy') {
